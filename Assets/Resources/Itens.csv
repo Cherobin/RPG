@@ -1,0 +1,7 @@
+ID;NOME;TIPO;DANO;DEFESA
+1;Espada Curta;sword;10;1 
+2;Espada Longa;sword;15;0 
+3;Espada de Fogo;sword;25;5 
+4;Escudo de madeira;shield;0;5
+5;Escudo do Dragão;shield;0;10 
+6;teste;teste;0;0 
