@@ -21,6 +21,7 @@ public class LeitorCSVScript : MonoBehaviour
             //se não for nulo, carrega a Dungeon e os Personagens
             carregaDungeon(); 
             carregaPersonagens();
+            carregaItens();
         }
 
     }
@@ -64,7 +65,8 @@ public class LeitorCSVScript : MonoBehaviour
                 vida = int.Parse(valor[4]),
                 dano = int.Parse(valor[5]),
                 //estou utilizando o JsonHelper para converter em array. O normal não tem essa função
-                itens = JsonHelper.FromJson<int>(valor[6])
+                itens = JsonHelper.FromJson<int>(valor[6]),
+                dropChance = int.Parse(valor[7])
 
             };
 
@@ -75,7 +77,50 @@ public class LeitorCSVScript : MonoBehaviour
 
     }
 
-  
+    // função que carrega todos os itens do CSV
+    void carregaItens()
+    {
+
+        //nome do arquivo dos itens é Itens, ele deve estar dentro na pastas
+        // Resouces
+        TextAsset leArquivo = Resources.Load<TextAsset>("Itens");
+
+        if (leArquivo == null)
+        {
+            Debug.Log("não leu arquivo no gerenciador Itens");
+        }
+        else
+        {
+            Debug.Log("leu arquivo de csv Itens");
+        }
+         
+
+        string[] data = leArquivo.text.Split('\n');
+
+        //começa pelo 1 pq ele avisa quais são meus parametros;
+        for (int i = 1; i < data.Length; i++)
+        {
+            //Debug.Log(data[i]);
+            string[] valor = data[i].Split(';');
+
+            //cria Itens (classe) na lista- não temos o prefb dele ainda
+            Item item = new Item
+            {
+                //seta os valores
+                id = int.Parse(valor[0]),
+                nome = valor[1],
+                tipo = valor[2],
+                dano = int.Parse(valor[3]),
+                defesa = int.Parse(valor[4]),
+                  
+            };
+
+            //adiciona na lista
+            gerenciador.itens.Add(item);
+
+        }
+
+    }
 
     // função que carrega todas as Dungeons do CSV
     void carregaDungeon()

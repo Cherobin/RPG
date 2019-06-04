@@ -1,11 +1,11 @@
-ID;NOME;TIPO;FAMILIA;VIDA;DANO;ITEM
-1;Chompoff;Enemy;Orc Priest;200;0;{"itens":[1,3]} 
-2;Chompkun;Enemy;Orc Knight;100;2;{"itens":[1,2]} 
-3;Ajaxsoe;Enemy;Orc Archer;300;3;{"itens":[4,5]} 
-4;AnvilAjax;Enemy;Orc Mage;400;2;{"itens":[1]} 
-5;Nyexis;Enemy;Orc Priest Blue;500;1;{"itens":[1,2,3,4,5]} 
-6;Vecois;Enemy;Orc Knight Blue;600;3;{"itens":[1,2,3,4,5]} 
-7;Kegean;NPC Priest;Human;-1;-1;{"itens":[6]} 
-8;Toivuy;NPC Knight;Human;-1;-1;{"itens":[1,4]}
-9;Liguis;NPC Archer;Human;-1;-1;{"itens":[6]}
-10;Donias;NPC Mage;Human;-1;-1;{"itens":[6]}
+ID;NOME;TIPO;FAMILIA;VIDA;DANO;ITEM; % de DROP
+1;Chompoff;Enemy;Orc Priest;200;0;{"itens":[1,3]};10 
+2;Chompkun;Enemy;Orc Knight;100;2;{"itens":[1,2]};15
+3;Ajaxsoe;Enemy;Orc Archer;300;3;{"itens":[4,5]};18
+4;AnvilAjax;Enemy;Orc Mage;400;2;{"itens":[1]};80 
+5;Nyexis;Enemy;Orc Priest Blue;500;1;{"itens":[1,2,3,4,5]};10 
+6;Vecois;Enemy;Orc Knight Blue;600;3;{"itens":[1,2,3,4,5]};10 
+7;Kegean;NPC Priest;Human;-1;-1;{"itens":[6]};0 
+8;Toivuy;NPC Knight;Human;-1;-1;{"itens":[1,4]};10
+9;Liguis;NPC Archer;Human;-1;-1;{"itens":[6]};0
+10;Donias;NPC Mage;Human;-1;-1;{"itens":[6]};0

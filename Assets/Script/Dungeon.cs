@@ -47,7 +47,8 @@ public class Dungeon : MonoBehaviour
                 {
                     int posAux = Random.Range(0, 10);
 
-                    var novoInimigo = Instantiate(gerenciador.mergeInimigo(gerenciador.inimigos[i]),
+                    var novoInimigo = Instantiate(
+                        gerenciador.mergeInimigo(gerenciador.inimigos[i]),
                         new Vector3(posX + posAux, 0.5f, posZ + posAux),
                      Quaternion.identity);
 

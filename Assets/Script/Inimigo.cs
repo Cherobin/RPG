@@ -15,9 +15,15 @@ public class Inimigo : MonoBehaviour
     public int vida;
     public int dano;
     public int[] itens;
-   
+    public int dropChance;
+
+    private GerenciadorBehaviourScript gerenciador;
+
     private void Start()
     {
+
+        gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorBehaviourScript>();
+
         //coloco o nome do inimigo como nome do prefab tbm
         gameObject.name = nome;
     }
@@ -36,10 +42,41 @@ public class Inimigo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            int rnd = UnityEngine.Random.Range(0, 100);
+            
+             if (rnd <= dropChance)
+                {
+                //criar um item
+                //pegar o valor total de itens e dar um rnd dessa lista
+                int rndItem = UnityEngine.Random.Range(0, itens.Length);
+                criaItem(itens[rndItem]);
+                }
 
             Destroy(gameObject);
 
         }
     }
- 
+    //tenho que receber um ID
+    void criaItem(int auxID)
+    {
+        //vendo toda a minha lista de itens carregado, e tenho que achar o ID igual.
+        for (int i = 0; i < gerenciador.itens.Count; i++)
+        {
+            // achou o id correto, cria!
+            if (auxID == gerenciador.itens[i].id)
+            {
+               
+                    var novoItem = Instantiate(
+                        gerenciador.mergeItem(gerenciador.itens[i]),
+                        new Vector3(transform.position.x, 0.5f, transform.position.z),
+                     Quaternion.identity);
+
+                    //novoInimigo.transform.parent = transform;
+
+                
+            }
+        }
+
+    }
+
 }
