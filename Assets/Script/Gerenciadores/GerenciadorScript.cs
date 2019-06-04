@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GerenciadorBehaviourScript : MonoBehaviour
+public class GerenciadorScript : MonoBehaviour
 {
 
 

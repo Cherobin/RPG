@@ -14,7 +14,7 @@ public class Dungeon : MonoBehaviour
     public int raio = 10;
     public float timer = 0;
 
-    private GerenciadorBehaviourScript gerenciador;
+    private GerenciadorScript gerenciador;
 
 
    
@@ -25,7 +25,7 @@ public class Dungeon : MonoBehaviour
         name = nome;
    
 
-        gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorBehaviourScript>();
+        gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorScript>();
 
         if (gerenciador == null)
         {

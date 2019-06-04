@@ -8,12 +8,12 @@ public class LeitorCSVScript : MonoBehaviour
     public GameObject prefDungeon;
     public GameObject listaDeDungeon;
 
-    private GerenciadorBehaviourScript gerenciador;
+    private GerenciadorScript gerenciador;
 
     void Start()
     {
 
-        gerenciador = gameObject.GetComponent<GerenciadorBehaviourScript>();
+        gerenciador = gameObject.GetComponent<GerenciadorScript>();
 
         if(gerenciador == null) {
             Debug.Log("gerenciador null no Leitor de CSV");

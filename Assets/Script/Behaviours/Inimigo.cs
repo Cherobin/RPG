@@ -17,12 +17,12 @@ public class Inimigo : MonoBehaviour
     public int[] itens;
     public int dropChance;
 
-    private GerenciadorBehaviourScript gerenciador;
+    private GerenciadorScript gerenciador;
 
     private void Start()
     {
 
-        gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorBehaviourScript>();
+        gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorScript>();
        
         //coloco o nome do inimigo como nome do prefab tbm
         gameObject.name = nome;

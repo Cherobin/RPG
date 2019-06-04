@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8084996475954039108}
-  - component: {fileID: 3838895653938371061}
   - component: {fileID: 8761787651712007540}
+  - component: {fileID: 5240350120458404577}
   m_Layer: 0
   m_Name: Gerenciador
   m_TagString: Untagged
@@ -32,22 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3838895653938371061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8084996475954039110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30ceb73f3f694d12b9e702b5e37b68b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefPersonagem: {fileID: 0}
-  prefDungeon: {fileID: 0}
-  inimigos: []
-  dungeons: []
 --- !u!114 &8761787651712007540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +46,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefDungeon: {fileID: 0}
   listaDeDungeon: {fileID: 0}
+--- !u!114 &5240350120458404577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084996475954039110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30ceb73f3f694d12b9e702b5e37b68b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefListaItens: {fileID: 0}
+  prefPersonagem: {fileID: 0}
+  prefItem: {fileID: 0}
+  prefDungeon: {fileID: 0}
+  inimigos: []
+  dungeons: []
+  itens: []
