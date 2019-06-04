@@ -6,6 +6,10 @@ public class GerenciadorBehaviourScript : MonoBehaviour
 {
 
 
+
+    //cria a ref da lista de item
+    public GameObject prefListaItens;
+
     //cria a ref do prefab do personagem
     public GameObject prefPersonagem;
 
@@ -55,7 +59,6 @@ public class GerenciadorBehaviourScript : MonoBehaviour
         prefItem.GetComponent<Item>().tipo = item.tipo; 
         prefItem.GetComponent<Item>().dano = item.dano;
         prefItem.GetComponent<Item>().defesa = item.defesa; 
-
         return prefItem;
 
     }

@@ -23,7 +23,7 @@ public class Inimigo : MonoBehaviour
     {
 
         gerenciador = GameObject.Find("Gerenciador").GetComponent<GerenciadorBehaviourScript>();
-
+       
         //coloco o nome do inimigo como nome do prefab tbm
         gameObject.name = nome;
     }
@@ -71,7 +71,7 @@ public class Inimigo : MonoBehaviour
                         new Vector3(transform.position.x, 0.5f, transform.position.z),
                      Quaternion.identity);
 
-                    //novoInimigo.transform.parent = transform;
+                    novoItem.transform.parent = gerenciador.prefListaItens.transform;
 
                 
             }
