@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
     public float speed;
 
     private Rigidbody rb;
-    public GameObject[] todos;
+
+    public List<int> inventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,19 +20,16 @@ public class Player : MonoBehaviour
             Debug.LogError("Não tem Rigidbody neste compomente");
         }
 
-        todos = GameObject.FindGameObjectsWithTag("Pick Up");
 
+        inventory = new List<int>(5);
 
+        if (PlayerPrefs.HasKey("invetory")) { 
+            inventory.AddRange(
+                JsonHelper.FromJson<int>(PlayerPrefs.GetString("invetory")));
+        }
     }
 
-    public void setColor (Color color) {
-
-        Debug.Log(color);
-
-        GetComponent<MeshRenderer>().material.color = color;
-      
-
-    }
+  
     // Update is called once per frame
     void Update()
     {
@@ -46,32 +45,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pick Up"))
+        if (other.gameObject.CompareTag("Item"))
         {
-            if(GetComponent<MeshRenderer>().material.color ==
-                other.GetComponent<MeshRenderer>().material.color) { 
-                 other.gameObject.SetActive(false);
-
-                mudaCor();
-                // other.gameObject
-                //Destroy(other.gameObject);
+            if(inventory.Count <= 5) {  
+             inventory.Add(other.gameObject.GetComponent<Item>().id);
+             Destroy(other.gameObject, 0.5f);
+                saveInventory();
             }
         }
     }
 
-    void mudaCor() {
-
-
-        foreach (var item in todos)
-        {
-            if (item.gameObject.activeSelf)
-            {
-                GetComponent<MeshRenderer>().material.color =
-                    item.GetComponent<MeshRenderer>().material.color;
-            } else {
-                Debug.Log("Você Ganhou ");
-            }
-        }
-
+    void saveInventory() {
+        string inv = JsonHelper.ToJson<int>(inventory.ToArray());
+        PlayerPrefs.SetString("invetory", inv);
+        PlayerPrefs.Save();
     }
+
 }

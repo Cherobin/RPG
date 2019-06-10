@@ -29,11 +29,12 @@ public class GerenciadorScript : MonoBehaviour
     public List<Item> itens = new List<Item>();
 
     //aqui justamos as informações do inimigo com o prefab. E retornamos
-    public GameObject mergeInimigo(Inimigo ini) {
+    public GameObject mergeInimigo(Inimigo ini)
+    {
         /*
          * aqui estamos pegando o script do prefab inimigo que é o ini, e 
           estamos colocando os valores especificos para cadas atributo. 
-        */       
+        */
         prefPersonagem.GetComponent<Inimigo>().id = ini.id;
         prefPersonagem.GetComponent<Inimigo>().nome = ini.nome;
         prefPersonagem.GetComponent<Inimigo>().tipo = ini.tipo;
@@ -56,9 +57,9 @@ public class GerenciadorScript : MonoBehaviour
         */
         prefItem.GetComponent<Item>().id = item.id;
         prefItem.GetComponent<Item>().nome = item.nome;
-        prefItem.GetComponent<Item>().tipo = item.tipo; 
+        prefItem.GetComponent<Item>().tipo = item.tipo;
         prefItem.GetComponent<Item>().dano = item.dano;
-        prefItem.GetComponent<Item>().defesa = item.defesa; 
+        prefItem.GetComponent<Item>().defesa = item.defesa;
         return prefItem;
 
     }

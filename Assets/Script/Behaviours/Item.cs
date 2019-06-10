@@ -26,4 +26,13 @@ public class Item : MonoBehaviour
     {
         
     }
+
+
+    void OnGUI()
+    {
+        //Use a Câmera Principal e obtenha a posição do objeto atual
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(this.transform.position);
+        //Cria o label
+        GUI.Label(new Rect(screenPos.x, Screen.height - screenPos.y, 100, 50), nome);
+    }
 }
