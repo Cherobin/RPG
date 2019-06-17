@@ -10,7 +10,7 @@ public class LeitorCSVScript : MonoBehaviour
 
     private GerenciadorScript gerenciador;
 
-    void Start()
+    void Awake()
     {
 
         gerenciador = gameObject.GetComponent<GerenciadorScript>();
