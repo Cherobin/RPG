@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LeitorCSVScript : MonoBehaviour
 {
- 
     public GameObject prefDungeon;
     public GameObject listaDeDungeon;
 
@@ -12,24 +11,24 @@ public class LeitorCSVScript : MonoBehaviour
 
     void Awake()
     {
-
         gerenciador = gameObject.GetComponent<GerenciadorScript>();
 
-        if(gerenciador == null) {
+        if (gerenciador == null)
+        {
             Debug.Log("gerenciador null no Leitor de CSV");
-        } else { 
+        }
+        else
+        {
             //se não for nulo, carrega a Dungeon e os Personagens
-            carregaDungeon(); 
+            carregaDungeon();
             carregaPersonagens();
             carregaItens();
         }
-
     }
 
     // função que carrega todos os personagens do CSV
     void carregaPersonagens()
     {
-
         //nome do arquivo dos personagens é Personagens, ele deve estar dentro na pastas
         // Resouces
         TextAsset leArquivo = Resources.Load<TextAsset>("Personagens");
@@ -42,8 +41,6 @@ public class LeitorCSVScript : MonoBehaviour
         {
             Debug.Log("leu arquivo de csv Personagem");
         }
-
-
 
 
         string[] data = leArquivo.text.Split('\n');
@@ -67,59 +64,29 @@ public class LeitorCSVScript : MonoBehaviour
                 //estou utilizando o JsonHelper para converter em array. O normal não tem essa função
                 itens = JsonHelper.FromJson<int>(valor[6]),
                 dropChance = int.Parse(valor[7])
-
             };
 
             //adiciona na lista
             gerenciador.inimigos.Add(inimigo);
-
-        } 
-
+        }
     }
 
     // função que carrega todos os itens do CSV
     void carregaItens()
     {
-
-        //nome do arquivo dos itens é Itens, ele deve estar dentro na pastas
-        // Resouces
-        TextAsset leArquivo = Resources.Load<TextAsset>("Itens");
-
-        if (leArquivo == null)
+        foreach (var item in Resources.FindObjectsOfTypeAll<RPG.Item>())
         {
-            Debug.Log("não leu arquivo no gerenciador Itens");
-        }
-        else
-        {
-            Debug.Log("leu arquivo de csv Itens");
-        }
-         
-
-        string[] data = leArquivo.text.Split('\n');
-
-        //começa pelo 1 pq ele avisa quais são meus parametros;
-        for (int i = 1; i < data.Length; i++)
-        {
-            //Debug.Log(data[i]);
-            string[] valor = data[i].Split(';');
-
-            //cria Itens (classe) na lista- não temos o prefb dele ainda
-            Item item = new Item
+            var newItem = new Item
             {
-                //seta os valores
-                id = int.Parse(valor[0]),
-                nome = valor[1],
-                tipo = valor[2],
-                dano = int.Parse(valor[3]),
-                defesa = int.Parse(valor[4]),
-                  
+                id = item.id,
+                nome = item.itemName,
+                tipo = item.itemType.name,
+                dano = item.damageValue,
+                defesa = item.defenseValue
             };
-
-            //adiciona na lista
-            gerenciador.itens.Add(item);
-
+            
+            gerenciador.itens.Add(newItem);
         }
-
     }
 
     // função que carrega todas as Dungeons do CSV
@@ -144,7 +111,6 @@ public class LeitorCSVScript : MonoBehaviour
         }
 
 
-
         string[] data = leArquivo.text.Split('\n');
 
         //começa pelo 1 pq ele avisa quais são meus parametros;
@@ -161,10 +127,10 @@ public class LeitorCSVScript : MonoBehaviour
             prefDungeon.GetComponent<Dungeon>().qtdade = int.Parse(valor[4]);
             prefDungeon.GetComponent<Dungeon>().tempoDeSpawn = int.Parse(valor[5]);
             prefDungeon.GetComponent<Dungeon>().nome = valor[6];
-           
+
 
             //cria a dungeon
-            Instantiate(prefDungeon, listaDeDungeon.transform);  
+            Instantiate(prefDungeon, listaDeDungeon.transform);
 
             //adiciona a dungeon na lista
             gerenciador.dungeons.Add(prefDungeon.GetComponent<Dungeon>());
